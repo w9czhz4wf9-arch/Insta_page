@@ -156,6 +156,35 @@
   .sort-select{font-family:'Cinzel', serif; font-size:0.78rem; border:1px solid var(--wine); background:transparent; padding:6px 10px; color:var(--wine);}
   .shop-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 
+  /* ABOUT SECTION */
+  .about-story{padding:80px 0; background: var(--body-bg); border-top:1px solid var(--border-line);}
+  .about-story h2{font-family:'Pinyon Script', cursive; font-size: clamp(2.8rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; text-align: center; color: var(--wine);}
+  .about-story p{color: #4a232f; margin-bottom: 18px; font-size: 1rem; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;}
+  .about-values{background: #faf6f7; border-top:1px solid var(--border-line); border-bottom:1px solid var(--border-line); padding:70px 0;}
+  .av-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:40px; margin-top:40px;}
+  .av-item{border-left:2px solid var(--wine); padding-left:22px;}
+  .av-item h4{font-family:'Cinzel', serif; font-size:1.1rem; font-weight:600; margin-bottom:10px; color:var(--wine);}
+  .av-item p{font-size:0.92rem; color:#4a232f;}
+
+  /* CONTACT SECTION */
+  .contact-layout{display:grid; grid-template-columns:1fr 1fr; gap:60px; padding:40px 0 80px; align-items:start;}
+  .form-field{margin-bottom:22px;}
+  .form-field label{display:block; font-family:'Cinzel', serif; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--wine); margin-bottom:8px;}
+  .form-field input, .form-field select, .form-field textarea{
+    width:100%; border:1px solid var(--border-line); background:#fff; padding:12px 14px; font-family:'Montserrat', sans-serif; font-size:0.92rem; color:var(--wine);
+  }
+  .form-field textarea{resize:vertical; min-height:110px;}
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{outline:1px solid var(--wine);}
+  .contact-info-block{margin-bottom:36px;}
+  .contact-info-block h6{font-family:'Cinzel', serif; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--wine); margin-bottom:12px;}
+  .contact-info-block p, .contact-info-block a{font-size:0.95rem; color:#4a232f; display:block; margin-bottom:6px;}
+  .faq-item{border-bottom:1px solid var(--border-line); padding:16px 0;}
+  .faq-item summary{font-family:'Cinzel', serif; font-weight:600; font-size:0.9rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; color:var(--wine);}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-family:'Montserrat', sans-serif;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{margin-top:10px; font-size:0.88rem; color:#4a232f;}
+
   /* FOOTER - PINK */
   footer{border-top:1px solid var(--wine); padding:60px 0 30px; background:var(--pink-header); color:var(--wine);}
   .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid var(--border-line);}
@@ -166,7 +195,7 @@
 
   @media (max-width: 860px){
     nav ul{display:none;}
-    .values, .cat-grid, .shop-layout, .foot-grid{grid-template-columns:1fr;}
+    .values, .cat-grid, .shop-layout, .av-grid, .contact-layout, .foot-grid{grid-template-columns:1fr;}
     .shop-grid{grid-template-columns:repeat(2,1fr);}
     .cat{border-right:none; border-bottom:1px solid var(--border-line);}
   }
@@ -285,6 +314,96 @@
   </div>
 </section>
 
+<!-- ABOUT SECTION -->
+<section class="about-story" id="about">
+  <div class="wrap">
+    <div class="sh-eyebrow">Our Story</div>
+    <h2>Built by people who've bought the fakes and learned the hard way.</h2>
+    <p>Rather than build another marketplace where anyone can list anything, we built a smaller, slower model: every item is physically inspected by us before it goes live, priced fairly for both sides, and shipped the way it should be.</p>
+  </div>
+</section>
+
+<section class="about-values">
+  <div class="wrap">
+    <div class="sh-eyebrow">What We Stand For</div>
+    <h2 class="sh-title" style="margin-bottom:20px;">Two rules we don't bend on</h2>
+    <div class="av-grid">
+      <div class="av-item">
+        <h4>Authenticity is non-negotiable</h4>
+        <p>If we can't verify a piece with confidence, it doesn't get listed — full stop, regardless of how good a sale it would be.</p>
+      </div>
+      <div class="av-item">
+        <h4>Condition is described, not sold</h4>
+        <p>Flaws are photographed and disclosed upfront. What you see in the listing is what arrives at your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="section-tight" style="border-top:1px solid var(--border-line);">
+  <div class="wrap">
+    <div class="sh-eyebrow">Get In Touch</div>
+    <h2 class="sh-title">Questions before you buy?</h2>
+  </div>
+</section>
+
+<section style="padding-top:0; background: var(--body-bg);">
+  <div class="wrap contact-layout">
+    <div>
+      <form onsubmit="event.preventDefault(); document.getElementById('formNote').style.display='block';">
+        <div class="form-field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-field">
+          <label>What's this about?</label>
+          <select>
+            <option>General inquiry</option>
+            <option>Question on a specific lot</option>
+            <option>Order & shipping issue</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Tell us a bit more..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Send Message</button>
+        <p id="formNote" style="display:none; margin-top:16px; font-size:0.86rem; color:var(--wine);">Thanks — this is a demo form for now, so wire it up to your email or CRM before launch.</p>
+      </form>
+    </div>
+
+    <div>
+      <div class="contact-info-block">
+        <h6>Reach Us Directly</h6>
+        <a href="mailto:hello@almirah.in">hello@almirah.in</a>
+        <a href="#">+91 00000 00000 (WhatsApp)</a>
+        <a href="#">@almirah.india on Instagram</a>
+      </div>
+
+      <div style="margin-top:40px;">
+        <h6>Frequently Asked</h6>
+        <details class="faq-item">
+          <summary>How do I know an item is genuinely authenticated?</summary>
+          <p>Every listing includes a condition report and authentication note. Higher-value items also carry third-party verification on request.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you ship pan-India?</summary>
+          <p>Yes — insured courier shipping is available across all serviceable pin codes, with doorstep verification for high-value lots.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's your return policy?</summary>
+          <p>Returns are accepted within 48 hours of delivery if the item doesn't match its listed condition report.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -341,6 +460,18 @@ document.querySelectorAll('.chip').forEach(chip => {
     render();
   });
 });
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
 render();
 </script>
 
