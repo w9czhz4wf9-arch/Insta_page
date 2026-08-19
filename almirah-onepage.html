@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almirah — Pre-loved Luxury, From The World To India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#12201c;
+    --ivory:#f2ece0;
+    --paper:#e9e1d0;
+    --brass:#ad8a4f;
+    --brass-light:#cfae76;
+    --stamp:#883c34;
+    --sage:#4c5c4b;
+    --charcoal:#211f1a;
+    --line: rgba(33,31,26,0.14);
+    --line-dark: rgba(242,236,224,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,236,224,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{display:flex; align-items:center; justify-content:space-between; padding:18px 32px;}
+  .logo{font-family:'Fraunces', serif; font-weight:600; font-size:1.5rem; letter-spacing:0.01em;}
+  .logo span{color:var(--stamp); font-style:italic; font-weight:450;}
+  nav ul{list-style:none; display:flex; gap:34px; font-size:0.86rem; letter-spacing:0.03em; text-transform:uppercase;}
+  nav ul li a{position:relative; padding-bottom:4px; transition:color .2s;}
+  nav ul li a:hover{color:var(--stamp);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:2px; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    border:1px solid var(--charcoal); font-weight:500; cursor:pointer; transition:all .25s;
+  }
+  .btn-dark{background:var(--ink); color:var(--ivory); border-color:var(--ink);}
+  .btn-dark:hover{background:var(--stamp); border-color:var(--stamp);}
+  .btn-ghost:hover{background:var(--charcoal); color:var(--ivory);}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--ink); color:var(--ivory);
+    padding:64px 0 0;
+  }
+  .hero .wrap{display:grid; grid-template-columns:1fr 0.9fr; gap:60px; align-items:center; padding-bottom:70px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--brass-light); display:flex; align-items:center; gap:12px; margin-bottom:26px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--brass-light);}
+  .hero h1{
+    font-family:'Fraunces', serif; font-weight:450; font-size:clamp(2.6rem, 4.4vw, 4.1rem);
+    line-height:1.06; letter-spacing:-0.01em; max-width:640px;
+  }
+  .hero h1 em{font-style:italic; color:var(--brass-light); font-weight:450;}
+  .hero p.lede{margin-top:26px; font-size:1.08rem; color:rgba(242,236,224,0.78); max-width:460px;}
+  .hero-actions{display:flex; gap:16px; margin-top:38px;}
+  .hero-actions .btn-dark{background:var(--brass); border-color:var(--brass); color:var(--ink); font-weight:600;}
+  .hero-actions .btn-dark:hover{background:var(--brass-light); border-color:var(--brass-light);}
+
+  .plate{
+    position:relative; background:var(--paper); border:1px solid var(--line-dark);
+    aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;
+    color:var(--ink);
+  }
+  .plate-frame{position:absolute; inset:14px; border:1px solid rgba(33,31,26,0.25);}
+  .plate-num{
+    position:absolute; top:30px; left:30px; font-family:'IBM Plex Mono'; font-size:0.72rem;
+    letter-spacing:0.08em; color:var(--sage);
+  }
+  .plate-icon{width:120px; height:120px; opacity:0.85;}
+  .stamp{
+    position:absolute; bottom:26px; right:26px; width:104px; height:104px;
+    border:2px solid var(--stamp); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    transform:rotate(-11deg); color:var(--stamp); mix-blend-mode:multiply;
+    background:rgba(136,60,52,0.03);
+  }
+  .stamp-inner{font-family:'IBM Plex Mono'; font-size:0.56rem; letter-spacing:0.06em; text-transform:uppercase; line-height:1.35; font-weight:500;}
+  .hero-strip{
+    border-top:1px solid var(--line-dark); padding:20px 0;
+    display:flex; gap:0; overflow:hidden;
+  }
+  .marquee{display:flex; gap:56px; white-space:nowrap; animation:scroll 26s linear infinite; font-family:'IBM Plex Mono'; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(242,236,224,0.55);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* SECTION HEADS */
+  .section{padding:96px 0;}
+  .section-tight{padding:70px 0;}
+  .sh-eyebrow{font-family:'IBM Plex Mono'; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stamp); margin-bottom:14px;}
+  .sh-title{font-family:'Fraunces', serif; font-weight:450; font-size:clamp(1.9rem,3vw,2.6rem); max-width:640px; letter-spacing:-0.01em;}
+
+  /* VALUE PROPS */
+  .values{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:56px;}
+  .value{background:var(--ivory); padding:38px 32px;}
+  .value .vnum{font-family:'IBM Plex Mono'; font-size:0.75rem; color:var(--brass); margin-bottom:18px;}
+  .value h3{font-family:'Fraunces', serif; font-weight:600; font-size:1.25rem; margin-bottom:10px;}
+  .value p{font-size:0.93rem; color:#4a463d;}
+
+  /* CATEGORIES */
+  .cats{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr);}
+  .cat{
+    padding:44px 26px; border-right:1px solid var(--line); text-align:left; position:relative;
+    transition:background .25s;
+  }
+  .cat:last-child{border-right:none;}
+  .cat:hover{background:rgba(173,138,79,0.12);}
+  .cat .cnum{font-family:'IBM Plex Mono'; font-size:0.7rem; color:var(--sage); display:block; margin-bottom:36px;}
+  .cat h4{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600; margin-bottom:8px;}
+  .cat span.count{font-size:0.82rem; color:#6b665a;}
+
+  /* PROCESS */
+  .process-list{margin-top:56px; border-top:1px solid var(--line);}
+  .proc-row{display:grid; grid-template-columns:90px 1fr 1.3fr; gap:32px; padding:34px 0; border-bottom:1px solid var(--line); align-items:start;}
+  .proc-row .pnum{font-family:'Fraunces', serif; font-style:italic; font-size:1.6rem; color:var(--brass);}
+  .proc-row h4{font-family:'Fraunces', serif; font-weight:600; font-size:1.15rem; padding-top:4px;}
+  .proc-row p{font-size:0.94rem; color:#4a463d; padding-top:4px;}
+
+  /* PRODUCT GRID */
+  .lots-head{display:flex; justify-content:space-between; align-items:end; margin-bottom:44px;}
+  .lot-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px;}
+
+  /* INSTAGRAM STRIP */
+  .insta{padding:90px 0; text-align:center;}
+  .insta-head{max-width:520px; margin:0 auto 46px;}
+  .ig-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:4px; max-width:960px; margin:0 auto;}
+  .ig-cell{aspect-ratio:1; background:var(--paper); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+  .ig-cell svg{width:26px; height:26px; opacity:0.4;}
+  .ig-handle{margin-top:34px; font-family:'IBM Plex Mono'; font-size:0.9rem; letter-spacing:0.04em;}
+  .ig-handle a{border-bottom:1px solid var(--stamp); color:var(--stamp);}
+
+  /* FOOTER */
+  footer{background:var(--charcoal); color:var(--ivory); padding:70px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:50px; border-bottom:1px solid var(--line-dark);}
+  .foot-logo{font-family:'Fraunces', serif; font-size:1.5rem; font-weight:600;}
+  .foot-logo span{color:var(--brass-light); font-style:italic;}
+  .foot-desc{margin-top:16px; font-size:0.88rem; color:rgba(242,236,224,0.55); max-width:280px;}
+  .foot-col h6{font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); margin-bottom:16px;}
+  .foot-col ul{list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.9rem; color:rgba(242,236,224,0.72);}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:24px; font-size:0.78rem; color:rgba(242,236,224,0.4); font-family:'IBM Plex Mono';}
+
+  @media (max-width: 860px){
+    nav ul, .nav-cta .btn-ghost{display:none;}
+    .hero .wrap{grid-template-columns:1fr; padding-bottom:40px;}
+    .values{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .cat:nth-child(2n){border-right:none;}
+    .lot-grid{grid-template-columns:repeat(2,1fr);}
+    .proc-row{grid-template-columns:50px 1fr; }
+    .proc-row p{grid-column:2/3;}
+    .foot-grid{grid-template-columns:1fr 1fr; gap:30px;}
+    .ig-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee{animation:none;}
+  }
+
+  /* ===== SHOP: filters + grid ===== */
+  .shop-layout{display:grid; grid-template-columns:220px 1fr; gap:48px; padding:70px 0 100px;}
+  .filters h6{font-family:'IBM Plex Mono'; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin-bottom:14px;}
+  .filter-group{margin-bottom:38px;}
+  .filter-opt{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; border-bottom:1px solid transparent; transition:color .2s;}
+  .filter-opt:hover{color:var(--stamp);}
+  .filter-opt input{accent-color:var(--stamp);}
+  .filter-opt .fcount{font-family:'IBM Plex Mono'; font-size:0.72rem; color:#8a8577;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px;}
+  .chip{font-family:'IBM Plex Mono'; font-size:0.72rem; padding:7px 13px; border:1px solid var(--charcoal); cursor:pointer; letter-spacing:0.03em; background:transparent; transition:all .2s;}
+  .chip.active, .chip:hover{background:var(--charcoal); color:var(--ivory);}
+  .shop-toolbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; padding-bottom:18px; border-bottom:1px solid var(--line);}
+  .shop-toolbar .count{font-size:0.88rem; color:#5a5648;}
+  .sort-select{font-family:'IBM Plex Mono'; font-size:0.78rem; border:1px solid var(--line); background:var(--ivory); padding:8px 12px; color:var(--charcoal);}
+  .shop-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+
+  /* ===== ABOUT ===== */
+  .about-story{display:grid; grid-template-columns:1fr 1fr; gap:70px; padding:80px 0; align-items:center;}
+  .about-story .plate{aspect-ratio:4/5;}
+  .about-story h2{font-family:'Fraunces', serif; font-weight:450; font-size:clamp(1.8rem,3vw,2.4rem); line-height:1.15; margin-bottom:20px;}
+  .about-story p{color:#4a463d; margin-bottom:16px; font-size:0.98rem;}
+  .about-values{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:80px 0;}
+  .av-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:50px;}
+  .av-item{border-left:1px solid var(--charcoal); padding-left:22px;}
+  .av-item h4{font-family:'Fraunces', serif; font-size:1.15rem; font-weight:600; margin-bottom:10px;}
+  .av-item p{font-size:0.9rem; color:#4a463d;}
+
+  /* ===== CONTACT ===== */
+  .contact-layout{display:grid; grid-template-columns:1fr 1fr; gap:70px; padding:80px 0 100px; align-items:start;}
+  .form-field{margin-bottom:22px;}
+  .form-field label{display:block; font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--sage); margin-bottom:8px;}
+  .form-field input, .form-field select, .form-field textarea{
+    width:100%; border:1px solid var(--line); background:var(--paper); padding:12px 14px; font-family:'Inter'; font-size:0.92rem; color:var(--charcoal);
+  }
+  .form-field textarea{resize:vertical; min-height:110px;}
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{outline:2px solid var(--brass); outline-offset:1px;}
+  .contact-info-block{margin-bottom:36px;}
+  .contact-info-block h6{font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin-bottom:10px;}
+  .contact-info-block p, .contact-info-block a{font-size:0.95rem; color:var(--charcoal); display:block;}
+  .faq-item{border-bottom:1px solid var(--line); padding:18px 0;}
+  .faq-item summary{font-family:'Fraunces', serif; font-weight:600; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-family:'IBM Plex Mono'; color:var(--brass);}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{margin-top:12px; font-size:0.9rem; color:#4a463d;}
+
+  @media (max-width: 860px){
+    .shop-layout{grid-template-columns:1fr;}
+    .shop-grid{grid-template-columns:repeat(2,1fr);}
+    .about-story{grid-template-columns:1fr;}
+    .av-grid{grid-template-columns:1fr;}
+    .contact-layout{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar wrap" style="padding-left:0; padding-right:0;">
+    <div class="logo"><a href="#home">Almirah<span>.</span></a></div>
+    <nav><ul>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <div class="nav-cta">
+      <a href="#shop" class="btn btn-dark">Shop The Vault</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Est. 2026</div>
+      <h1>Pre-loved luxury — <em>from the world</em> to India.</h1>
+      <p class="lede">Almirah is a curated resale house for authenticated designer handbags, watches and jewellery. Every piece is handpicked and quality ensured before it's posted on the website.</p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn btn-dark">Browse Current Lots</a>
+      </div>
+    </div>
+    <div class="plate">
+      <div class="plate-frame"></div>
+      <div class="plate-num">ALMIRAH / CURATED</div>
+      <svg class="plate-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M25 40 L25 85 L75 85 L75 40 Z"/>
+        <path d="M35 40 V28 A15 15 0 0 1 65 28 V40"/>
+        <line x1="25" y1="55" x2="75" y2="55"/>
+      </svg>
+      <div class="stamp">
+        <div class="stamp-inner">Provenance<br>Verified<br>· Almirah ·</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip wrap" style="padding-left:0; padding-right:0;">
+    <div class="marquee">
+      <span>Handbags</span><span>·</span><span>Watches</span><span>·</span><span>Fine Jewellery</span><span>·</span><span>Small Leather Goods</span><span>·</span><span>Authenticated by In-House Experts</span><span>·</span>
+      <span>Handbags</span><span>·</span><span>Watches</span><span>·</span><span>Fine Jewellery</span><span>·</span><span>Small Leather Goods</span><span>·</span><span>Authenticated by In-House Experts</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="authentication">
+  <div class="wrap">
+    <div class="sh-eyebrow">Why Almirah</div>
+    <h2 class="sh-title">Resale in India runs on trust — we built the whole model around earning it.</h2>
+    <div class="values">
+      <div class="value">
+        <div class="vnum">01</div>
+        <h3>Three-point authentication</h3>
+        <p>Every piece is examined against hardware, stitching and material references before it's listed .</p>
+      </div>
+      <div class="value">
+        <div class="vnum">02</div>
+        <h3>Honest condition grading</h3>
+        <p>Pristine, Excellent, Very Good, Good — photographed and described so what arrives matches exactly what you saw.</p>
+      </div>
+      <div class="value">
+        <div class="vnum">03</div>
+        <h3>Insured, tracked delivery</h3>
+        <p>Pan-India shipping in tamper-evident packaging, insured for the full resale value, with doorstep verification available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cats">
+  <div class="wrap" style="padding:0;">
+    <div class="cat-grid">
+      <a class="cat" href="#shop"><span class="cnum">I</span><h4>Handbags</h4><span class="count">Chanel, Hermès, LV & more</span></a>
+      <a class="cat" href="#shop"><span class="cnum">II</span><h4>Watches</h4><span class="count">Rolex, Omega, Cartier</span></a>
+      <a class="cat" href="#shop"><span class="cnum">III</span><h4>Fine Jewellery</h4><span class="count">Gold, diamond, heritage pieces</span></a>
+      <a class="cat" href="#shop"><span class="cnum">IV</span><h4>Accessories</h4><span class="count">Scarves, belts, small leather</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sh-eyebrow">Featured Lots</div>
+    <div class="lots-head">
+      <h2 class="sh-title" style="margin-bottom:0;">This week's arrivals</h2>
+    </div>
+    <div class="lot-grid" id="featuredGrid">
+      <!-- Items will be populated dynamically -->
+    </div>
+  </div>
+</section>
+
+<section id="shop" class="section-tight">
+  <div class="wrap">
+    <div class="sh-eyebrow">Shop The Vault</div>
+    <h2 class="sh-title">Browse the full catalogue</h2>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap shop-layout">
+    <aside class="filters">
+      <div class="filter-group">
+        <h6>Category</h6>
+        <label class="filter-opt"><span><input type="checkbox" class="cat-filter" value="handbags" checked> Handbags</span></label>
+        <label class="filter-opt"><span><input type="checkbox" class="cat-filter" value="watches" checked> Watches</span></label>
+        <label class="filter-opt"><span><input type="checkbox" class="cat-filter" value="jewellery" checked> Fine Jewellery</span></label>
+        <label class="filter-opt"><span><input type="checkbox" class="cat-filter" value="accessories" checked> Accessories</span></label>
+      </div>
+      <div class="filter-group">
+        <h6>Condition</h6>
+        <label class="filter-opt"><span><input type="checkbox" class="grade-filter" value="Pristine" checked> Pristine</span></label>
+        <label class="filter-opt"><span><input type="checkbox" class="grade-filter" value="Excellent" checked> Excellent</span></label>
+        <label class="filter-opt"><span><input type="checkbox" class="grade-filter" value="Very Good" checked> Very Good</span></label>
+      </div>
+      <div class="filter-group">
+        <h6>Price</h6>
+        <label class="filter-opt"><span><input type="radio" name="price" class="price-filter" value="all" checked> All prices</span></label>
+        <label class="filter-opt"><span><input type="radio" name="price" class="price-filter" value="0-50000"> Under ₹50,000</span></label>
+        <label class="filter-opt"><span><input type="radio" name="price" class="price-filter" value="50000-200000"> ₹50,000 – ₹2,00,000</span></label>
+        <label class="filter-opt"><span><input type="radio" name="price" class="price-filter" value="200000-99999999"> Above ₹2,00,000</span></label>
+      </div>
+    </aside>
+
+    <div>
+      <div class="chip-row" id="chipRow">
+        <button class="chip active" data-cat="all">All Lots</button>
+        <button class="chip" data-cat="handbags">Handbags</button>
+        <button class="chip" data-cat="watches">Watches</button>
+        <button class="chip" data-cat="jewellery">Fine Jewellery</button>
+        <button class="chip" data-cat="accessories">Accessories</button>
+      </div>
+
+      <div class="shop-toolbar">
+        <div class="count" id="resultCount">0 lots</div>
+        <select class="sort-select" id="sortSelect">
+          <option value="new">Newest arrivals</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div class="shop-grid" id="shopGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-story" id="about">
+  <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;">
+    <div class="plate" style="aspect-ratio:4/5;">
+      <div class="plate-frame"></div>
+      <div class="plate-num">EST. 2026 / BENGALURU</div>
+      <svg class="plate-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M25 45 L75 45 L75 85 L25 85 Z"/><path d="M25 45 L50 20 L75 45"/><line x1="50" y1="20" x2="50" y2="45"/>
+      </svg>
+    </div>
+    <div>
+      <h2>Built by people who've bought the fakes and learned the hard way.</h2>
+      <p>Rather than build another marketplace where anyone can list anything, we built a smaller, slower model: every item is physically inspected by us before it goes live, priced fairly for both sides, and shipped the way it should be.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-values">
+  <div class="wrap">
+    <div class="sh-eyebrow">What We Stand For</div>
+    <h2 class="sh-title">Two rules we don't bend on</h2>
+    <div class="av-grid">
+      <div class="av-item">
+        <h4>Authenticity is non-negotiable</h4>
+        <p>If we can't verify a piece with confidence, it doesn't get listed — full stop, regardless of how good a sale it would be.</p>
+      </div>
+      <div class="av-item">
+        <h4>Condition is described, not sold</h4>
+        <p>Flaws are photographed and disclosed upfront. What you see in the listing is what arrives at your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insta" id="instagram">
+  <div class="wrap">
+    <div class="insta-head">
+      <div class="sh-eyebrow" style="text-align:center;">Follow The Catalogue</div>
+      <h2 class="sh-title" style="text-align:center; margin:0 auto;">New lots drop first on Instagram</h2>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/></svg></div>
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><circle cx="12" cy="12" r="9"/></svg></div>
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><rect x="4" y="4" width="16" height="16"/></svg></div>
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><path d="M4 12h16M12 4v16"/></svg></div>
+      <div class="ig-cell"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
+    </div>
+    <div class="ig-handle">Find us <a href="#">@almirah.india</a></div>
+  </div>
+</section>
+
+<section id="contact" class="section-tight">
+  <div class="wrap">
+    <div class="sh-eyebrow">Get In Touch</div>
+    <h2 class="sh-title">Questions before you buy?</h2>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap contact-layout">
+    <div>
+      <form onsubmit="event.preventDefault(); document.getElementById('formNote').style.display='block';">
+        <div class="form-field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-field">
+          <label>What's this about?</label>
+          <select>
+            <option>General inquiry</option>
+            <option>Question on a specific lot</option>
+            <option>Order & shipping issue</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Tell us a bit more..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Send Message</button>
+        <p id="formNote" style="display:none; margin-top:16px; font-size:0.86rem; color:var(--sage);">Thanks — this is a demo form for now, so wire it up to your email or CRM before launch.</p>
+      </form>
+    </div>
+
+    <div>
+      <div class="contact-info-block">
+        <h6>Studio</h6>
+        <p>Almirah Authentication Studio<br>Bengaluru, Karnataka, India</p>
+      </div>
+      <div class="contact-info-block">
+        <h6>Reach Us Directly</h6>
+        <a href="mailto:hello@almirah.in">hello@almirah.in</a>
+        <a href="#">+91 00000 00000 (WhatsApp)</a>
+        <a href="#">@almirah.india on Instagram</a>
+      </div>
+
+      <div style="margin-top:44px;">
+        <h6 style="font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin-bottom:16px;">Frequently Asked</h6>
+        <details class="faq-item">
+          <summary>How do I know an item is genuinely authenticated?</summary>
+          <p>Every listing includes a condition report and authentication note. Higher-value items also carry third-party verification on request.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you ship pan-India?</summary>
+          <p>Yes — insured courier shipping is available across all serviceable pin codes, with doorstep verification for high-value lots.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's your return policy?</summary>
+          <p>Returns are accepted within 48 hours of delivery if the item doesn't match its listed condition report.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Almirah<span>.</span></div>
+        <p class="foot-desc">A curated resale house for authenticated pre-owned luxury — handbags, watches and fine jewellery, shipped across India.</p>
+      </div>
+      <div class="foot-col">
+        <h6>Shop</h6>
+        <ul><li><a href="#shop">Handbags</a></li><li><a href="#shop">Watches</a></li><li><a href="#shop">Jewellery</a></li><li><a href="#shop">Accessories</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h6>Almirah</h6>
+        <ul><li><a href="#about">About Us</a></li><li><a href="#contact">Shipping & Returns</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Almirah. Bengaluru, India.</span>
+      <span>Every lot authenticated. Every sale insured.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ICONS = {
+  handbags: '<path d="M25 40 L25 85 L75 85 L75 40 Z"/><path d="M35 40 V28 A15 15 0 0 1 65 28 V40"/>',
+  watches: '<circle cx="50" cy="50" r="24"/><line x1="50" y1="50" x2="50" y2="34"/><line x1="50" y1="50" x2="60" y2="50"/>',
+  jewellery: '<path d="M30 45 L50 25 L70 45 L60 80 L40 80 Z"/>',
+  accessories: '<path d="M25 35 L75 35 L75 80 L25 80 Z"/><path d="M25 35 L50 55 L75 35"/>'
+};
+
+/* Empty array awaiting your real items */
+const PRODUCTS = [];
+
+function render(){
+  const activeCats = Array.from(document.querySelectorAll('.cat-filter:checked')).map(el=>el.value);
+  const activeGrades = Array.from(document.querySelectorAll('.grade-filter:checked')).map(el=>el.value);
+  const priceVal = document.querySelector('.price-filter:checked').value;
+  const chipCat = document.querySelector('.chip.active').dataset.cat;
+  const sort = document.getElementById('sortSelect').value;
+
+  let [lo, hi] = priceVal==='all' ? [0, Infinity] : priceVal.split('-').map(Number);
+
+  let items = PRODUCTS.filter(p =>
+    activeCats.includes(p.cat) &&
+    activeGrades.includes(p.grade) &&
+    p.price >= lo && p.price <= hi &&
+    (chipCat === 'all' || chipCat === p.cat)
+  );
+
+  if(sort==='price-asc') items.sort((a,b)=>a.price-b.price);
+  if(sort==='price-desc') items.sort((a,b)=>b.price-a.price);
+
+  document.getElementById('resultCount').textContent = items.length + (items.length===1 ? ' lot' : ' lots');
+
+  const grid = document.getElementById('shopGrid');
+  grid.innerHTML = items.map(p => `
+    <div class="lot-card">
+      <a href="#">
+        <div class="lot-photo"><div class="lot-tag">${p.tag}</div>
+          <svg viewBox="0 0 100 100" fill="none" stroke="var(--sage)" stroke-width="1.3">${ICONS[p.cat]}</svg>
+        </div>
+        <div class="lot-body">
+          <div class="lbrand">${p.brand}</div>
+          <h5>${p.name}</h5>
+          <div class="lot-foot"><span class="lot-price">₹${p.price.toLocaleString('en-IN')}</span><span class="lot-grade">${p.grade}</span></div>
+        </div>
+      </a>
+    </div>
+  `).join('') || '<p style="color:#6b665a; padding:40px 0; grid-column: 1/-1;">New lots dropping soon. Check back shortly!</p>';
+}
+
+document.querySelectorAll('.cat-filter, .grade-filter, .price-filter').forEach(el => el.addEventListener('change', render));
+document.getElementById('sortSelect').addEventListener('change', render);
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    render();
+  });
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#','');
+  const match = document.querySelector(`.chip[data-cat="${hash}"]`);
+  if(match){
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    match.classList.add('active');
+  }
+  render();
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
+
+</body>
+</html>
